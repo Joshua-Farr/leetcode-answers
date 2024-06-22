@@ -15,9 +15,20 @@ var romanToInt = function (s) {
 
   let numeralSum = 0;
 
-  //Need to work backwards from the end of the roman numberal
+  for (let i = s.length - 1; i >= 0; i--) {
+    const value = numberMap.get(s.charAt(i));
 
-  for (let i = s.length - 1; i >= 0; i--) {}
-
+    if (numberMap.get(s.charAt(i)) > numberMap.get(s.charAt(i - 1))) {
+      const reducerValue = 2 * numberMap.get(s.charAt(i - 1));
+      const newValue = value - reducerValue;
+      numeralSum += newValue;
+    } else {
+      numeralSum += value;
+    }
+  }
   return numeralSum;
 };
+
+const interger = romanToInt("MCMXCIV");
+
+console.log(interger);
