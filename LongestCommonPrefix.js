@@ -11,26 +11,36 @@ var longestCommonPrefix = function (strs) {
 
   let prefix = "";
 
-  for (let j = 0; j < strs[0].length; j++) {
-    let prefixStatus = false;
-    const char = strs[0].charAt(j);
-    for (let i = 0; i < strs.length - 1; i++) {
-      console.log("Checking ", char, "in ", strs[i + 1]);
-      if (strs[i + 1].charAt(j) === char) {
-        prefixStatus = true;
-      } else {
-        false;
-      }
-      if (!prefixStatus) {
-        return "";
-      }
-    }
-    if (prefixStatus) {
-      prefix += char;
-    }
+  const word = strs[0];
 
-    return prefix;
+  if (strs.length === 1 || strs[0] === "") {
+    return strs[0];
   }
 
-  return;
+  for (let j = 0; j < word.length; j++) {
+    let prefixStatus = false;
+    const char = word.charAt(j);
+    console.log("Now checking this char: ", char);
+
+    for (let i = 0; i < strs.length - 1; i++) {
+      console.log("Checking ", char, "in ", strs[i + 1]);
+
+      if (char === strs[i + 1].charAt(j)) {
+        prefixStatus = true;
+      } else {
+        return prefix;
+      }
+    }
+
+    if (prefixStatus === true) {
+      prefix += char;
+      console.log("Prefix: ", prefix);
+    }
+  }
+  return prefix;
 };
+
+const strings = ["flower", "flower", "flower", "flower"];
+
+const answer = longestCommonPrefix(strings);
+console.log("Here is the answer: ", answer);
