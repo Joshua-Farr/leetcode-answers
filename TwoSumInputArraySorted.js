@@ -6,4 +6,22 @@
 // The tests are generated such that there is exactly one solution. You may not use the same element twice.
 // Your solution must use only constant extra space.
 
-var twoSum = function (numbers, target) {};
+var twoSum = function (numbers, target) {
+  let index1 = 1;
+  let index2 = number.length - 1;
+
+  for (const num of numbers) {
+    const sumOfTwoIndexValues = numbers[index1] + numbers[index2];
+
+    if (sumOfTwoIndexValues > target) {
+      //The sume is too big, move right index down
+      index2 -= 1;
+    } else if (sumOfTwoIndexValues < target) {
+      //The sum is too small, move left index up
+      index1 += 1;
+    } else if (sumOfTwoIndexValues === target) {
+      //The sum is the target, return the answe.
+      return [index1, index2];
+    }
+  }
+};
