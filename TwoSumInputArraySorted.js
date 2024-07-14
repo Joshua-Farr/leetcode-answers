@@ -8,20 +8,20 @@
 
 var twoSum = function (numbers, target) {
   let index1 = 1;
-  let index2 = number.length - 1;
+  let index2 = numbers.length - 1;
 
   for (const num of numbers) {
-    const sumOfTwoIndexValues = numbers[index1] + numbers[index2];
+    const sumOfTwoIndexValues = numbers[index1 - 1] + numbers[index2];
 
     if (sumOfTwoIndexValues > target) {
-      //The sume is too big, move right index down
+      //The sum is too big, move right index down
       index2 -= 1;
     } else if (sumOfTwoIndexValues < target) {
       //The sum is too small, move left index up
       index1 += 1;
     } else if (sumOfTwoIndexValues === target) {
-      //The sum is the target, return the answe.
-      return [index1, index2];
+      //The sum is the target, return the answer
+      return [index1, index2 + 1];
     }
   }
 };
